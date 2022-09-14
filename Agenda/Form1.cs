@@ -71,5 +71,17 @@ namespace Agenda
            
 
         }
+
+        private void dgwTabela_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgwTabela.CurrentRow.Index != -1)
+            {
+                txtId.Text = dgwTabela.CurrentRow.Cells[0].Value.ToString();
+                txtNome.Text = dgwTabela.CurrentRow.Cells[1].Value.ToString();
+                txtEmail.Text = dgwTabela.CurrentRow.Cells[2].Value.ToString();
+
+
+            }
+        }
     }
 }
