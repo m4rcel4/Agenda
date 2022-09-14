@@ -78,7 +78,7 @@ namespace Agenda
 
         }
 
-       void limpar()
+       void limpar()// qualquer void é um método criado para não precisar repetir o código em tods os blocos 
         {
 
             txtId.Text = "";
@@ -113,8 +113,36 @@ namespace Agenda
 
         }
 
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes== MessageBox.Show("Deseja excluir contato?","Confirmação", MessageBoxButtons.YesNo))
+
+            {
+                try
+                {
+                    using (MySqlConnection cnn = new MySqlConnection())
+                    {
+                        cnn.ConnectionString = "server=localhost;database=agenda;uid=root;pwd=;port=3306";
+                        cnn.Open();
+                        string sql = "Delete from contatos where idContatos = '" + txtId.Text + "'";
+                        MySqlCommand cmd = new MySqlCommand(sql, cnn);
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show(" Deletado com sucesso! ");
+
+                    }
+                    limpar();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
 
 
+            }
+            mostrar();
+  
+        }
     }
 
 }
