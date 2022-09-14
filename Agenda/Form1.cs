@@ -22,20 +22,28 @@ namespace Agenda
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-
-            using (MySqlConnection cnn = new MySqlConnection())
+            try
             {
-                cnn.ConnectionString = "server=localhost;database=agenda;uid=root;pwd=;port=3306";
-                cnn.Open();
-                MessageBox.Show("Inserido com sucesso!");
-                string sql = "insert into contatos (nome, email) values ('" + txtNome.Text + "', '" + txtEmail.Text + "')";
-                MySqlCommand cmd = new MySqlCommand(sql, cnn);
-                cmd.ExecuteNonQuery();
 
+                using (MySqlConnection cnn = new MySqlConnection())
+                {
+                    cnn.ConnectionString = "server=localhost;database=agenda;uid=root;pwd=;port=3306";
+                    cnn.Open();
+                    MessageBox.Show("Inserido com sucesso!");
+                    string sql = "insert into contatos (nome, email) values ('" + txtNome.Text + "', '" + txtEmail.Text + "')";
+                    MySqlCommand cmd = new MySqlCommand(sql, cnn);
+                    cmd.ExecuteNonQuery();
 
+                }
             }
 
-        }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            mostrar();
+          }
+
 
         void mostrar()
         {
@@ -60,7 +68,7 @@ namespace Agenda
                 MessageBox.Show(ex.ToString());
             }
 
-            mostrar();
+           
 
         }
     }
