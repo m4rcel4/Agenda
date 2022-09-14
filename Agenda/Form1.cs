@@ -48,7 +48,7 @@ namespace Agenda
             }
             mostrar();
             limpar();
-          }
+         }
 
 
         void mostrar()
@@ -137,11 +137,32 @@ namespace Agenda
                 {
                     MessageBox.Show(ex.ToString());
                 }
-
-
             }
             mostrar();
-  
+
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                using (MySqlConnection cnn = new MySqlConnection())
+                {
+                    cnn.ConnectionString = "server=localhost;database=agenda;uid=root;pwd=;port=3306";
+                    cnn.Open();
+                    string sql = "Update contatos set nome='" + txtNome.Text + "', email='" + txtEmail.Text + "' where idContatos='" + txtId.Text + "'";
+                    MySqlCommand cmd = new MySqlCommand(sql, cnn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Atualizado com sucesso!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            mostrar();
         }
     }
 
