@@ -16,32 +16,38 @@ namespace Agenda
         public Form1()
         {
             InitializeComponent();
-            mostrar();
-           
+            mostrar();           
         }
+        string continua = "yes"; // criei fora do form público porque ele precisa funcionar somente nesse form.
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            try
+            verificaVazio(); // void criado lá embaixo
+
+            if (continua == "yes")
             {
-
-                using (MySqlConnection cnn = new MySqlConnection())
+                try
                 {
-                    cnn.ConnectionString = "server=localhost;database=agenda;uid=root;pwd=;port=3306";
-                    cnn.Open();
-                    MessageBox.Show("Inserido com sucesso!");
-                    string sql = "insert into contatos (nome, email) values ('" + txtNome.Text + "', '" + txtEmail.Text + "')";
-                    MySqlCommand cmd = new MySqlCommand(sql, cnn);
-                    cmd.ExecuteNonQuery();
 
+                    using (MySqlConnection cnn = new MySqlConnection())
+                    {
+                        cnn.ConnectionString = "server=localhost;database=agenda;uid=root;pwd=;port=3306";
+                        cnn.Open();
+                        MessageBox.Show("Inserido com sucesso!");
+                        string sql = "insert into contatos (nome, email) values ('" + txtNome.Text + "', '" + txtEmail.Text + "')";
+                        MySqlCommand cmd = new MySqlCommand(sql, cnn);
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
                 }
             }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
             mostrar();
+            limpar();
           }
 
 
@@ -72,8 +78,18 @@ namespace Agenda
 
         }
 
-        private void dgwTabela_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+       void limpar()
         {
+
+            txtId.Text = "";
+            txtNome.Clear();
+            txtEmail.Text = "";
+              
+        }
+
+        private void dgwTabela_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
             if (dgwTabela.CurrentRow.Index != -1)
             {
                 txtId.Text = dgwTabela.CurrentRow.Cells[0].Value.ToString();
@@ -83,5 +99,22 @@ namespace Agenda
 
             }
         }
+        void verificaVazio()
+        {
+            if (txtNome.Text == "" || txtEmail.Text == "")
+            {
+                continua = "no";
+                MessageBox.Show("Preencha todos os campos");
+            }
+            else
+            {
+                continua = "yes";
+            }
+
+        }
+
+
+
     }
+
 }
