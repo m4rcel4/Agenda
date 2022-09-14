@@ -38,6 +38,8 @@
             this.dgwTabela = new System.Windows.Forms.DataGridView();
             this.btnDeletar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwTabela)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(73, 70);
+            this.label1.Location = new System.Drawing.Point(73, 173);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 13);
             this.label1.TabIndex = 1;
@@ -63,7 +65,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 130);
+            this.label2.Location = new System.Drawing.Point(56, 222);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 2;
@@ -72,7 +74,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 200);
+            this.label3.Location = new System.Drawing.Point(56, 272);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 3;
@@ -81,7 +83,7 @@
             // txtId
             // 
             this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(116, 70);
+            this.txtId.Location = new System.Drawing.Point(139, 166);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(50, 20);
@@ -89,14 +91,14 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(116, 130);
+            this.txtNome.Location = new System.Drawing.Point(116, 222);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(167, 20);
             this.txtNome.TabIndex = 5;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(116, 200);
+            this.txtEmail.Location = new System.Drawing.Point(116, 265);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(167, 20);
             this.txtEmail.TabIndex = 6;
@@ -130,11 +132,29 @@
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 37);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "PESQUISAR";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.Location = new System.Drawing.Point(154, 45);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(160, 20);
+            this.txtPesquisa.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(895, 450);
+            this.Controls.Add(this.txtPesquisa);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnDeletar);
             this.Controls.Add(this.dgwTabela);
@@ -165,6 +185,8 @@
         private System.Windows.Forms.DataGridView dgwTabela;
         private System.Windows.Forms.Button btnDeletar;
         private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtPesquisa;
     }
 }
 
