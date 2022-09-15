@@ -99,7 +99,7 @@ namespace Agenda
 
             }
         }
-        void verificaVazio()
+        void verificaVazio()// método criado para verificar se todos os campos estão completos, para não inserir dados vazios no banco
         {
             if (txtNome.Text == "" || txtEmail.Text == "")
             {
@@ -163,6 +163,11 @@ namespace Agenda
                 MessageBox.Show(ex.ToString());
             }
             mostrar();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
